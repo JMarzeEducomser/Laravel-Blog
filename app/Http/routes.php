@@ -16,5 +16,21 @@ Route::get('/', function () {
 });
 
 Route::get('hola', function () {
-    return "Hola mundo!!!";
+    $form = "<form action='hola' method='post'>".
+        "<input type='hidden' name='_token' value='".csrf_token()."'/>".
+        "<input type='hidden' name='_method' value='put'/>".
+        "<input type='submit'/>".
+        "</form>";
+    return $form;
 });
+
+Route::post('hola', function () {
+    return "POST!!!";
+});
+
+Route::put('hola', function () {
+    return "PUT!!!";
+});
+
+// Ruta que responde por controlador
+Route::get('controlador/{parametro?}', 'PruebaController@funcion');
