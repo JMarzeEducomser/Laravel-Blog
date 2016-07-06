@@ -10,11 +10,16 @@ Recuerda revisar la documentación para reforzar los conocimientos impartidos [L
 
 1. Realizar ejercicios puntuales para complementar las rutas (patch, delete y options) indicando su funcionalidad.
     - [Referencia](https://laravel.com/docs/5.2/routing)
+    
+2. Realizar CRUD de la tabla 'tags' basándose en lo avanzado en clases (tabla 'categorias').
 
 ## Notas Parciales
 
 Código de Alumno | Ti-1
 ---------------- | ----
+CCM311084|
+SVO020291|
+MVA060281|
 
 ## Facilitador
 

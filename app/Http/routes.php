@@ -34,3 +34,6 @@ Route::put('hola', function () {
 
 // Ruta que responde por controlador
 Route::get('controlador/{parametro?}', 'PruebaController@funcion');
+
+// Rutas para Categoria
+Route::resource('categoria', 'CategoriaController');
