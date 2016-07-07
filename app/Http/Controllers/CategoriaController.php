@@ -29,7 +29,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categoria.create');
     }
 
     /**
@@ -40,7 +40,12 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Categoria();
+        $categoria->nombre = $request->nombre;
+
+        $categoria->save();
+
+        return redirect()->route('categoria.index');
     }
 
     /**

@@ -21,6 +21,11 @@ CCM311084|
 SVO020291|
 MVA060281|
 
+## Comandos Artisan
+
+php artisan make:model NombreDelModeloSingular
+php artisan make:controller NombreDelControlardorSingularController --resource
+
 ## Facilitador
 
 J. Marcelo Arze - Desarrollador de Sistemas

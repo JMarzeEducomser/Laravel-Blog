@@ -37,3 +37,7 @@ Route::get('controlador/{parametro?}', 'PruebaController@funcion');
 
 // Rutas para Categoria
 Route::resource('categoria', 'CategoriaController');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
