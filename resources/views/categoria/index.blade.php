@@ -19,12 +19,23 @@
                         <tr class="table-header">
                             <th>ID</th>
                             <th>Nombre</th>
+                            <th></th>
                         </tr>
 
                         @foreach($categorias as $categoria)
                         <tr class="table-body">
                             <td>{{ $categoria->id }}</td>
                             <td>{{ $categoria->nombre }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <a href="{{ route('categoria.edit', $categoria->id) }}" class="btn btn-warning">
+                                        <i class="fa fa-btn fa-edit"></i>Editar
+                                    </a>
+                                    <a href="{{ route('categoria.show', $categoria->id) }}" class="btn btn-danger">
+                                        <i class="fa fa-btn fa-trash"></i>Eliminar
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                         @endforeach
                     </table>
