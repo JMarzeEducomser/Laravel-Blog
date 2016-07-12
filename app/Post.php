@@ -4,7 +4,7 @@ namespace Blog;
 
 use Illuminate\Database\Eloquent\Model;
 // Eliminación de bajo nivel (1)
-use Illuminate\Database\Eloquent\Model\SoftDeletes;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {

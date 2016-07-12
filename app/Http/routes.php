@@ -38,6 +38,11 @@ Route::get('controlador/{parametro?}', 'PruebaController@funcion');
 // Rutas para Categoria
 Route::resource('categoria', 'CategoriaController');
 
+Route::group(['prefix' => 'admin'], function() {
+    // Rutas para Posts
+    Route::resource('post', 'PostController');
+});
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
