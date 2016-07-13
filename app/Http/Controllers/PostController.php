@@ -5,8 +5,10 @@ namespace Blog\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Blog\Http\Requests;
+use Blog\Http\Requests\PostRequest;
 
 use Blog\Post;
+use Blog\Categoria;
 
 use Carbon\Carbon;
 
@@ -33,7 +35,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Categoria::orderBy('nombre', 'asc')->lists('nombre', 'id');
+        return view('post.create')->with('categorias', $categorias);
     }
 
     /**
@@ -42,9 +45,12 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
-        //
+        $post = new Post($request->all());
+        $post->save();
+
+        return redirect()->route('admin.post.index');
     }
 
     /**
