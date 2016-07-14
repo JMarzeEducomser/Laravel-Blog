@@ -47,8 +47,14 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $post = new Post($request->all());
-        $post->save();
+        try{
+            $post = new Post($request->all());
+            $post->save();
+
+            flash()->success('Se agregó un nuevo post titulado: '.$post->titulo);
+        }catch(\Exception $ex){
+            flash()->error('Ocurrió un problema al intentar agregar el post. '.$ex->getMessage());
+        }
 
         return redirect()->route('admin.post.index');
     }
@@ -72,7 +78,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        $categorias = Categoria::orderBy('nombre', 'asc')->lists('nombre', 'id');
+        return view('post.edit')->with('post', $post)->with('categorias', $categorias);
     }
 
     /**
@@ -84,7 +92,19 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try{
+            $post = Post::find($id);
+            $post->fill($request->all());
+            $post->update();
+
+            //flash()->warning('Se modificó el post: '.$post->titulo);
+            //flash()->warning('Se modificó el post: '.$post->titulo)->important();
+            flash()->overlay('Se modificó el post: '.$post->titulo, 'Edición');
+        }catch(\Exception $ex){
+            flash()->error('Ocurrió un problema al intentar editar...'.$ex->getMessage());
+        }
+
+        return redirect()->route('admin.post.index');
     }
 
     /**

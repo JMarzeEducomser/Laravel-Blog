@@ -23,8 +23,9 @@ class PostRequest extends Request
      */
     public function rules()
     {
+        $codigoPost = $this->route('post');
         return [
-            'codigo' => 'required|string|size:10',
+            'codigo' => 'required|string|size:10|unique:posts,codigo,'.$codigoPost.',codigo',
             'titulo' => 'required|string|max:100|min:2',
             'contenido' => 'required|min:2',
             'categoria_id' => 'required',
