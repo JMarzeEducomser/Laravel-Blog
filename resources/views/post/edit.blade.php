@@ -12,7 +12,7 @@
 
                 @include('post.partial.validation')
 
-                {!! Form::model($post, ['route' => ['admin.post.update', $post->codigo], 'method' => 'put', 'class' => 'form-horizontal']) !!}
+                {!! Form::model($post, ['route' => ['admin.post.update', $post->codigo], 'method' => 'put', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                 @include('post.partial.form')
 

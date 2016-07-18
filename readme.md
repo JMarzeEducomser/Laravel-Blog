@@ -13,13 +13,16 @@ Recuerda revisar la documentación para reforzar los conocimientos impartidos [L
     
 2. Realizar CRUD de la tabla 'tags' basándose en lo avanzado en clases (tabla 'categorias').
 
+3. Implementar la recuperación de posts eliminados.
+    - [Referencia](https://laravel.com/docs/5.2/eloquent)
+
 ## Notas Parciales
 
-Código de Alumno | Ti-1
----------------- | ----
-CCM311084|
-SVO020291|
-MVA060281|
+Código de Alumno | Ti-1 | Ti-2 |
+---------------- | ---- | ---- |
+CCM311084| | |
+SVO020291| | |
+MVA060281|X|X|
 
 ## Comandos Artisan
 

@@ -67,7 +67,8 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+        return view('post.show')->with('post', $post);
     }
 
     /**
@@ -90,7 +91,7 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, $id)
     {
         try{
             $post = Post::find($id);
@@ -115,6 +116,11 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        flash()->error('Se eliminó el post: '.$post->titulo);
+
+        return redirect()->route('admin.post.index');
     }
 }

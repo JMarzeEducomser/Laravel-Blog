@@ -40,12 +40,19 @@
     </div>
 </div>
 
+<div class="form-group">
+    {!! Form::label('imagen', 'Subir Imagen', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+    {!! Form::file('imagen', null, ['class' => 'form-control']) !!}
+    </div>
+</div>
+
 
 @section('script')
 
 @parent
 
 <script>
-    alert('Hola que tal!!!');
+    //alert('Hola que tal!!!');
 </script>
 @endsection

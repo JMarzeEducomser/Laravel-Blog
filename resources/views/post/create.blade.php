@@ -12,7 +12,7 @@
 
                 @include('post.partial.validation')
 
-                {!! Form::open(['route' => 'admin.post.store', 'method' => 'post', 'class' => 'form-horizontal']) !!}
+                {!! Form::open(['route' => 'admin.post.store', 'method' => 'post', 'class' => 'form-horizontal', 'files' => true]) !!}
 
                 @include('post.partial.form')
 
@@ -33,6 +33,6 @@
 
 @section('script')
 <script>
-    alert('Hola mundo!!!');
+    //alert('Hola mundo!!!');
 </script>
 @endsection
