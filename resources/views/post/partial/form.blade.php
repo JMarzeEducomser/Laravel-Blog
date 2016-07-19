@@ -47,6 +47,13 @@
     </div>
 </div>
 
+<div class="form-group">
+    {!! Form::label('tags', 'Tags', ['class' => 'col-md-4 control-label']) !!}
+    <div class="col-md-6">
+    {!! Form::select('tags[]', $tags, null,  ['class' => 'form-control', 'multiple' => 'multiple']) !!}
+    </div>
+</div>
+
 
 @section('script')
 

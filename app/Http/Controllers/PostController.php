@@ -9,8 +9,11 @@ use Blog\Http\Requests\PostRequest;
 
 use Blog\Post;
 use Blog\Categoria;
+use Blog\Tag;
 
 use Carbon\Carbon;
+
+use Illuminate\Http\Response;
 
 class PostController extends Controller
 {
@@ -22,9 +25,15 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'DESC')->paginate(5);
+        if($request->buscar_post != ''){
+            $posts = Post::likePost($request->buscar_post)->orderBy('created_at', 'DESC')->paginate(5);
+            $posts->appends(['buscar_post' => $request->buscar_post]);
+        }else{
+            $posts = Post::orderBy('created_at', 'DESC')->paginate(5);
+        }
+
         return view('post.index')->with('posts', $posts);
     }
 
@@ -36,7 +45,8 @@ class PostController extends Controller
     public function create()
     {
         $categorias = Categoria::orderBy('nombre', 'asc')->lists('nombre', 'id');
-        return view('post.create')->with('categorias', $categorias);
+        $tags = Tag::orderBy('nombre', 'asc')->lists('nombre', 'id');
+        return view('post.create')->with('categorias', $categorias)->with('tags', $tags);
     }
 
     /**
@@ -50,6 +60,10 @@ class PostController extends Controller
         try{
             $post = new Post($request->all());
             $post->save();
+
+            foreach($request['tags'] as $tag){
+                $post->tags()->attach($tag);
+            }
 
             flash()->success('Se agregó un nuevo post titulado: '.$post->titulo);
         }catch(\Exception $ex){
@@ -81,7 +95,8 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $categorias = Categoria::orderBy('nombre', 'asc')->lists('nombre', 'id');
-        return view('post.edit')->with('post', $post)->with('categorias', $categorias);
+        $tags = Tag::orderBy('nombre', 'asc')->lists('nombre', 'id');
+        return view('post.edit')->with('post', $post)->with('categorias', $categorias)->with('tags', $tags);
     }
 
     /**
@@ -97,6 +112,12 @@ class PostController extends Controller
             $post = Post::find($id);
             $post->fill($request->all());
             $post->update();
+
+            $post->tags()->detach();
+            foreach($request['tags'] as $tag){
+                $post->tags()->attach($tag);
+            }
+            //sync()
 
             //flash()->warning('Se modificó el post: '.$post->titulo);
             //flash()->warning('Se modificó el post: '.$post->titulo)->important();
@@ -122,5 +143,10 @@ class PostController extends Controller
         flash()->error('Se eliminó el post: '.$post->titulo);
 
         return redirect()->route('admin.post.index');
+    }
+
+    public function getImagen($nombreImagen){
+        $imagen = \Storage::disk('local')->get($nombreImagen);
+        return new Response($imagen, 200);
     }
 }

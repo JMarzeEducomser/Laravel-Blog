@@ -15,12 +15,22 @@
                         <i class="fa fa-btn fa-plus"></i>Nuevo
                     </a>
                     <hr/>
+                    {!! Form::open(['route' => 'admin.post.index', 'method' => 'get']) !!}
+                    <div class="input-group">
+                    {!! Form::text('buscar_post', null, ['placeholder' => 'Buscar post por código o título...', 'class' => 'form-control']) !!}
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </span>
+                    </div>
+                    {!! Form::close() !!}
+                    <hr/>
                     <table class="table table-hover">
                         <tr class="table-header">
                             <th>Código</th>
                             <th>Título</th>
                             <th>Publicado</th>
                             <th>Categoría</th>
+                            <th>Imagen</th>
                             <th>Fecha de Creación</th>
                             <th>Fecha de Modificación</th>
                             <th></th>
@@ -38,6 +48,13 @@
                                 @endif
                             </td>
                             <td>{{ $post->categoria->nombre }}</td>
+                            <td>
+                                @if($post->imagen != null && $post->imagen != '')
+                                <img src="{{ route('post.imagen', ['nombreImagen' => $post->imagen]) }}" alt="" width="100"/>
+                                @else
+                                Sin imagen
+                                @endif
+                            </td>
                             <td>{{ $post->created_at->diffForHumans() }}</td>
                             <td>{{ $post->updated_at->diffForHumans() }}</td>
                             <td>

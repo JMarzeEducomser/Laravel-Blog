@@ -15,6 +15,10 @@ Recuerda revisar la documentación para reforzar los conocimientos impartidos [L
 
 3. Implementar la recuperación de posts eliminados.
     - [Referencia](https://laravel.com/docs/5.2/eloquent)
+    
+4. Al momento de editar un post, hacer que los tags estén seleccionados.
+
+5. Implementar el método sync() para modificar los tags de un post existente.
 
 ## Notas Parciales
 

@@ -43,6 +43,9 @@ Route::group(['prefix' => 'admin'], function() {
     Route::resource('post', 'PostController');
 });
 
+// Ruta para acceder a los archivos de imagen (storage)
+Route::get('post/{nombreImagen}', 'PostController@getImagen')->name('post.imagen');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

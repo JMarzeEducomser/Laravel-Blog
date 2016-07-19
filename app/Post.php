@@ -21,6 +21,13 @@ class Post extends Model
 
     protected $fillable = ['codigo', 'titulo', 'contenido', 'publicado', 'categoria_id', 'imagen'];
 
+    // Scope
+    //public function scope(){}
+    public function scopeLikePost($query, $criterio){
+        return $query->where('codigo', 'LIKE', "%$criterio%")
+            ->orWhere('titulo', 'LIKE', "%$criterio%");
+    }
+
     // Mutators
     //public function setAttribute(){}
     public function setImagenAttribute($imagen){
