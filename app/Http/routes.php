@@ -46,6 +46,9 @@ Route::group(['prefix' => 'admin'], function() {
 // Ruta para acceder a los archivos de imagen (storage)
 Route::get('post/{nombreImagen}', 'PostController@getImagen')->name('post.imagen');
 
+// Ruta para PDF
+Route::get('post/{post}/reporte', 'PdfController@reporte')->name('post.reporte');
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

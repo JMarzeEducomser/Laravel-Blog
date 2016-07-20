@@ -20,13 +20,17 @@ Recuerda revisar la documentación para reforzar los conocimientos impartidos [L
 
 5. Implementar el método sync() para modificar los tags de un post existente.
 
+6. Realizar un reporte de todos los posts.
+
+7. Modificar el reporte individual de cada post para que muestre los tags y la imagen.
+
 ## Notas Parciales
 
-Código de Alumno | Ti-1 | Ti-2 |
----------------- | ---- | ---- |
-CCM311084| | |
-SVO020291| | |
-MVA060281|X|X|
+Código de Alumno | Ti-1 | Ti-2 | Ti-3 |
+---------------- | ---- | ---- | ---- |
+CCM311084| | | |
+SVO020291| | | |
+MVA060281|X|X|X|
 
 ## Comandos Artisan
 

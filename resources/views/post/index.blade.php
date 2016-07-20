@@ -31,6 +31,7 @@
                             <th>Publicado</th>
                             <th>Categoría</th>
                             <th>Imagen</th>
+                            <th>Tags</th>
                             <th>Fecha de Creación</th>
                             <th>Fecha de Modificación</th>
                             <th></th>
@@ -55,6 +56,13 @@
                                 Sin imagen
                                 @endif
                             </td>
+                            <td>
+                                <ul>
+                                    @foreach($post->tags as $tag)
+                                    <li>{{ $tag->nombre }}</li>
+                                    @endforeach
+                                </ul>
+                            </td>
                             <td>{{ $post->created_at->diffForHumans() }}</td>
                             <td>{{ $post->updated_at->diffForHumans() }}</td>
                             <td>
@@ -64,6 +72,9 @@
                                     </a>
                                     <a href="{{ route('admin.post.show', $post->codigo) }}" class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
+                                    </a>
+                                    <a href="{{ route('post.reporte', $post->codigo) }}" class="btn btn-info">
+                                        <i class="fa fa-download"></i>
                                     </a>
                                 </div>
                             </td>
