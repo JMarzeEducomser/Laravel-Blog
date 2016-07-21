@@ -38,7 +38,7 @@ Route::get('controlador/{parametro?}', 'PruebaController@funcion');
 // Rutas para Categoria
 Route::resource('categoria', 'CategoriaController');
 
-Route::group(['prefix' => 'admin'], function() {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     // Rutas para Posts
     Route::resource('post', 'PostController');
 });
@@ -47,6 +47,7 @@ Route::group(['prefix' => 'admin'], function() {
 Route::get('post/{nombreImagen}', 'PostController@getImagen')->name('post.imagen');
 
 // Ruta para PDF
+//Route::get('post/{post}/reporte', 'PdfController@reporte')->name('post.reporte')->middleware('admin');
 Route::get('post/{post}/reporte', 'PdfController@reporte')->name('post.reporte');
 
 Route::auth();
