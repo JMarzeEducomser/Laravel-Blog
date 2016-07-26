@@ -26,16 +26,11 @@ Recuerda revisar la documentación para reforzar los conocimientos impartidos [L
 
 ## Notas Parciales
 
-Código de Alumno | Ti-1 | Ti-2 | Ti-3 |
----------------- | ---- | ---- | ---- |
-CCM311084| | | |
-SVO020291| | | |
-MVA060281|X|X|X|
-
-## Comandos Artisan
-
-php artisan make:model NombreDelModeloSingular
-php artisan make:controller NombreDelControlardorSingularController --resource
+Código de Alumno | Ti-1 | Ti-2 | Ti-3 | Ti-4 | Ti-5 | Ti-6 | Ti-7 | Ti-Total | Extra | Examen | Asistencia | Total | Observación |
+---------------- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | -------- | ----- | ------ | ---------- | ----- | ----------- |
+CCM311084| | | | | | | |0| |55|19.6|74.6|Aprobado|
+SVO020291| | | | | | | |0| |0|7|7|Abandono|
+MVA060281|X|X|X| |X|X| |14.5| |60|18.2|92.7|Aprobado|
 
 ## Facilitador
 
